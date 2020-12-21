@@ -168,7 +168,7 @@ class PathPlanner():
         # fade out over .5s
         self.lane_change_ll_prob = max(self.lane_change_ll_prob - 2*DT_MDL, 0.0)
         # 98% certainty
-        if lane_change_prob < 0.04 and self.lane_change_ll_prob < 0.03:
+        if lane_change_prob < 0.05 and self.lane_change_ll_prob < 0.04:
           self.lane_change_state = LaneChangeState.laneChangeFinishing
 
       # finishing
