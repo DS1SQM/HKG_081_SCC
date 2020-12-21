@@ -13,7 +13,7 @@ from common.params import Params
 import cereal.messaging as messaging
 from cereal import log
 
-AUTO_LCA_START_TIME = 2.0
+AUTO_LCA_START_TIME = 0.5
 
 LaneChangeState = log.PathPlan.LaneChangeState
 LaneChangeDirection = log.PathPlan.LaneChangeDirection
@@ -168,7 +168,7 @@ class PathPlanner():
         # fade out over .5s
         self.lane_change_ll_prob = max(self.lane_change_ll_prob - 2*DT_MDL, 0.0)
         # 98% certainty
-        if lane_change_prob < 0.04 and self.lane_change_ll_prob < 0.03:
+        if lane_change_prob < 0.02 and self.lane_change_ll_prob < 0.01:
           self.lane_change_state = LaneChangeState.laneChangeFinishing
 
       # finishing
