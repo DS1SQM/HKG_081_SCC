@@ -139,7 +139,7 @@ class PathPlanner():
                        ((sm['carState'].steeringTorque > 0 and self.lane_change_direction == LaneChangeDirection.left) or
                         (sm['carState'].steeringTorque < 0 and self.lane_change_direction == LaneChangeDirection.right)) or \
                         self.auto_lane_change_enabled and \
-                       (AUTO_LCA_START_TIME+1.0) > self.auto_lane_change_timer > AUTO_LCA_START_TIME
+                       (AUTO_LCA_START_TIME+1.5) > self.auto_lane_change_timer > AUTO_LCA_START_TIME
 
       blindspot_detected = ((sm['carState'].leftBlindspot and self.lane_change_direction == LaneChangeDirection.left) or
                             (sm['carState'].rightBlindspot and self.lane_change_direction == LaneChangeDirection.right))
@@ -188,7 +188,7 @@ class PathPlanner():
     if self.lane_change_state == LaneChangeState.off:
       self.auto_lane_change_timer = 0.0
       self.prev_torque_applied = False
-    elif self.auto_lane_change_timer < (AUTO_LCA_START_TIME+1.0): # stop afer 3 sec resume from 10 when torque applied
+    elif self.auto_lane_change_timer < (AUTO_LCA_START_TIME+1.5): # stop afer 3 sec resume from 10 when torque applied
       self.auto_lane_change_timer += DT_MDL
 
     self.prev_one_blinker = one_blinker
